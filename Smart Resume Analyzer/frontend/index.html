@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="violet">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Resume Analyzer - AI & NLP Driven Career Optimization</title>
+    <meta name="description" content="State-of-the-art Smart Resume Analyzer web application. Upload your resume, analyze skill gaps for job roles, and generate ATS optimization scores using NLP.">
+    <link rel="stylesheet" href="css/style.css?v=3">
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">📄</div>
+                <span>Smart<span class="gradient-text">Resume</span></span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link active">Home</a></li>
+                <li><a href="job_role.html" class="nav-link">Job Roles</a></li>
+                <li><a href="upload.html" class="nav-link">Upload Resume</a></li>
+                <li><a href="score.html" class="nav-link">Resume Score</a></li>
+                <li><a href="suggestions.html" class="nav-link">Suggestions</a></li>
+                <li><a href="recommendations.html" class="nav-link">Recommendations</a></li>
+                <li><a href="review.html" class="nav-link">Reviews</a></li>
+            </ul>
+            <div id="nav-user-area">
+                <!-- Dynamically populated by config.js -->
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-tag">
+                    <span>⚡ Real-Time NLP Intelligence &amp; ATS Vector Scoring</span>
+                </div>
+                <h1 class="hero-title">Optimize Your Resume for Your <br><span class="gradient-text">Dream Job Role</span></h1>
+                <p class="hero-subtitle">
+                    Upload your PDF or DOCX resume, extract technical and soft skills with NLP, compute match percentages, and receive detailed score breakdowns, learning roadmaps, and career recommendations.
+                </p>
+                <div class="hero-btns">
+                    <a href="job_role.html" class="btn btn-primary">Start Resume Analysis →</a>
+                    <a href="upload.html" class="btn btn-secondary">Upload Resume File</a>
+                    <a href="#idiagram-pipeline" class="btn btn-secondary" style="font-size: 0.85rem;">Explore Architecture Blueprint ↓</a>
+                </div>
+
+                <!-- Showcase Media Image -->
+                <div class="hero-image-wrap">
+                    <img src="images/hero_dashboard.jpg" alt="Smart Resume Analyzer AI Dashboard and Score Meter" loading="lazy">
+                </div>
+
+                <!-- Live Metrics Bar -->
+                <div class="grid grid-4" style="margin-top: 48px; text-align: left;">
+                    <div class="card" style="padding: 22px;">
+                        <div style="font-size: 2rem; font-weight: 800; color: var(--accent-primary); font-family: 'Outfit';">30+</div>
+                        <div style="font-size: 0.88rem; color: var(--text-secondary); margin-top: 4px; font-weight: 600;">Standard Job Roles</div>
+                        <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 2px;">Curated Industry Benchmarks</div>
+                    </div>
+                    <div class="card" style="padding: 22px;">
+                        <div style="font-size: 2rem; font-weight: 800; color: var(--accent-magenta); font-family: 'Outfit';">150+</div>
+                        <div style="font-size: 0.88rem; color: var(--text-secondary); margin-top: 4px; font-weight: 600;">NLP Skills Evaluated</div>
+                        <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 2px;">Tech &amp; Soft Entity Lexicon</div>
+                    </div>
+                    <div class="card" style="padding: 22px;">
+                        <div style="font-size: 2rem; font-weight: 800; color: var(--accent-emerald); font-family: 'Outfit';">100 Pts</div>
+                        <div style="font-size: 0.88rem; color: var(--text-secondary); margin-top: 4px; font-weight: 600;">Weighted Scoring Engine</div>
+                        <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 2px;">Multi-Dimensional Analysis</div>
+                    </div>
+                    <div class="card" style="padding: 22px;">
+                        <div style="font-size: 2rem; font-weight: 800; color: var(--accent-amber); font-family: 'Outfit';">Instant</div>
+                        <div style="font-size: 0.88rem; color: var(--text-secondary); margin-top: 4px; font-weight: 600;">ATS Gap Breakdown</div>
+                        <div style="font-size: 0.75rem; color: var(--text-muted); margin-top: 2px;">Zero Latency Evaluation</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================================================
+             iDiagram 1: Interactive ATS Analysis Pipeline Diagram
+             ================================================================ -->
+        <section id="idiagram-pipeline" class="diagram-section">
+            <div class="container">
+                <div class="diagram-header">
+                    <span class="diagram-tag">Interactive Architecture Blueprint</span>
+                    <h2 style="font-size: 2.3rem; margin-bottom: 12px;">End-to-End <span class="gradient-text">ATS Analysis Pipeline</span></h2>
+                    <p style="color: var(--text-secondary); max-width: 680px; margin: 0 auto;">
+                        Click on any pipeline node below to inspect real-time processing telemetry, extraction algorithms, and scoring weights.
+                    </p>
+                </div>
+
+                <div class="idiagram-card">
+                    <div class="pipeline-flow">
+                        <!-- Step 1 -->
+                        <div class="pipeline-step-node active" onclick="window.activatePipelineStep(0)">
+                            <div class="node-icon-bubble">📄</div>
+                            <span class="node-badge">STAGE 01</span>
+                            <div class="node-title">File Ingestion</div>
+                            <div class="node-desc">PDF &amp; DOCX Text Stream Parsing</div>
+                        </div>
+
+                        <div class="pipeline-connector">➔</div>
+
+                        <!-- Step 2 -->
+                        <div class="pipeline-step-node" onclick="window.activatePipelineStep(1)">
+                            <div class="node-icon-bubble">🧠</div>
+                            <span class="node-badge">STAGE 02</span>
+                            <div class="node-title">NLP Tokenizer</div>
+                            <div class="node-desc">150+ Technical Entity Extraction</div>
+                        </div>
+
+                        <div class="pipeline-connector">➔</div>
+
+                        <!-- Step 3 -->
+                        <div class="pipeline-step-node" onclick="window.activatePipelineStep(2)">
+                            <div class="node-icon-bubble">🎯</div>
+                            <span class="node-badge">STAGE 03</span>
+                            <div class="node-title">Role Matcher</div>
+                            <div class="node-desc">Semantic Benchmark Comparison</div>
+                        </div>
+
+                        <div class="pipeline-connector">➔</div>
+
+                        <!-- Step 4 -->
+                        <div class="pipeline-step-node" onclick="window.activatePipelineStep(3)">
+                            <div class="node-icon-bubble">⚖️</div>
+                            <span class="node-badge">STAGE 04</span>
+                            <div class="node-title">ATS Scorer</div>
+                            <div class="node-desc">Weighted Multi-Factor Formula</div>
+                        </div>
+
+                        <div class="pipeline-connector">➔</div>
+
+                        <!-- Step 5 -->
+                        <div class="pipeline-step-node" onclick="window.activatePipelineStep(4)">
+                            <div class="node-icon-bubble">🚀</div>
+                            <span class="node-badge">STAGE 05</span>
+                            <div class="node-title">Growth AI</div>
+                            <div class="node-desc">Gap Analysis &amp; Learning Paths</div>
+                        </div>
+                    </div>
+
+                    <!-- Dynamic Telemetry Inspector Panel -->
+                    <div id="pipeline-detail-panel" class="diagram-detail-panel">
+                        <div style="flex: 1; min-width: 260px;">
+                            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                                <span style="font-size: 1.6rem;">📄</span>
+                                <div>
+                                    <span class="node-badge">STAGE 01</span>
+                                    <h3 style="font-size: 1.25rem;">Multi-Format Resume Ingestion</h3>
+                                </div>
+                            </div>
+                            <p style="color: var(--text-secondary); font-size: 0.92rem; line-height: 1.6;">
+                                Parses PDF and DOCX binary streams using PyPDF2 &amp; docx2txt, sanitizing raw text and preserving structural section boundaries.
+                            </p>
+                        </div>
+                        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                            <div class="diagram-stat-pill">
+                                <span class="diagram-stat-val">PDF / DOCX</span>
+                                <span class="diagram-stat-label">Accepted Formats</span>
+                            </div>
+                            <div class="diagram-stat-pill">
+                                <span class="diagram-stat-val">5 MB</span>
+                                <span class="diagram-stat-label">Max File Size</span>
+                            </div>
+                            <div class="diagram-stat-pill">
+                                <span class="diagram-stat-val">&lt; 120ms</span>
+                                <span class="diagram-stat-label">Parsing Latency</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================================================================
+             iDiagram 2: NLP Skill Cluster & Topology Matrix
+             ================================================================ -->
+        <section class="diagram-section" style="padding-top: 10px;">
+            <div class="container">
+                <div class="diagram-header">
+                    <span class="diagram-tag">NLP Entity Knowledge Graph</span>
+                    <h2 style="font-size: 2.2rem; margin-bottom: 12px;">Categorized <span class="gradient-text">Skill Topology Matrix</span></h2>
+                    <p style="color: var(--text-secondary); max-width: 640px; margin: 0 auto;">
+                        Our NLP engine groups and scores candidate skills across high-impact industry domain clusters.
+                    </p>
+                </div>
+
+                <div class="skill-cluster-grid">
+                    <!-- Cluster 1 -->
+                    <div class="skill-cluster-box">
+                        <div class="cluster-title">
+                            <span>💻 Backend &amp; Languages</span>
+                            <span style="font-size:0.75rem; color:var(--accent-primary); font-family:'JetBrains Mono';">01</span>
+                        </div>
+                        <div>
+                            <span class="skill-badge skill-matched">Python</span>
+                            <span class="skill-badge skill-matched">Java</span>
+                            <span class="skill-badge skill-matched">Node.js</span>
+                            <span class="skill-badge skill-matched">Go</span>
+                            <span class="skill-badge skill-matched">C++</span>
+                            <span class="skill-badge skill-matched">SQL</span>
+                        </div>
+                    </div>
+
+                    <!-- Cluster 2 -->
+                    <div class="skill-cluster-box">
+                        <div class="cluster-title">
+                            <span>☁️ Cloud &amp; DevOps</span>
+                            <span style="font-size:0.75rem; color:var(--accent-primary); font-family:'JetBrains Mono';">02</span>
+                        </div>
+                        <div>
+                            <span class="skill-badge skill-matched">AWS</span>
+                            <span class="skill-badge skill-matched">Docker</span>
+                            <span class="skill-badge skill-matched">Kubernetes</span>
+                            <span class="skill-badge skill-matched">Terraform</span>
+                            <span class="skill-badge skill-matched">CI/CD</span>
+                            <span class="skill-badge skill-matched">Linux</span>
+                        </div>
+                    </div>
+
+                    <!-- Cluster 3 -->
+                    <div class="skill-cluster-box">
+                        <div class="cluster-title">
+                            <span>🤖 AI, ML &amp; Data</span>
+                            <span style="font-size:0.75rem; color:var(--accent-primary); font-family:'JetBrains Mono';">03</span>
+                        </div>
+                        <div>
+                            <span class="skill-badge skill-matched">PyTorch</span>
+                            <span class="skill-badge skill-matched">TensorFlow</span>
+                            <span class="skill-badge skill-matched">NLP</span>
+                            <span class="skill-badge skill-matched">Pandas</span>
+                            <span class="skill-badge skill-matched">Scikit-Learn</span>
+                            <span class="skill-badge skill-matched">MLOps</span>
+                        </div>
+                    </div>
+
+                    <!-- Cluster 4 -->
+                    <div class="skill-cluster-box">
+                        <div class="cluster-title">
+                            <span>🛡️ Security &amp; Systems</span>
+                            <span style="font-size:0.75rem; color:var(--accent-primary); font-family:'JetBrains Mono';">04</span>
+                        </div>
+                        <div>
+                            <span class="skill-badge skill-matched">SIEM</span>
+                            <span class="skill-badge skill-matched">IAM</span>
+                            <span class="skill-badge skill-matched">Pen Testing</span>
+                            <span class="skill-badge skill-matched">Wireshark</span>
+                            <span class="skill-badge skill-matched">Encryption</span>
+                            <span class="skill-badge skill-matched">SOC</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Feature Cards Section -->
+        <section style="padding: 70px 0; border-top: 1px solid var(--border-color);">
+            <div class="container">
+                <div style="text-align: center; margin-bottom: 48px;">
+                    <h2 style="font-size: 2.2rem; margin-bottom: 12px;">Three-Step <span class="gradient-text">Analysis &amp; Guidance</span></h2>
+                    <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto;">A structured end-to-end workflow providing comprehensive score metrics, learning advice, and recommendations.</p>
+                </div>
+
+                <div class="grid grid-3">
+                    <div class="card">
+                        <div class="feature-icon-box">🎯</div>
+                        <h3 style="margin-bottom: 10px; font-size: 1.3rem;">1. Select Target Role</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6;">
+                            Choose from curated industry roles like Python Developer, Data Analyst, Cloud Engineer, Cybersecurity Analyst, and MLOps Engineer.
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <div class="feature-icon-box">⚡</div>
+                        <h3 style="margin-bottom: 10px; font-size: 1.3rem;">2. Upload &amp; NLP Parse</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6;">
+                            Upload your PDF or DOCX file. The system extracts text, maps technical &amp; soft skills, and evaluates your experience profile.
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <div class="feature-icon-box">📊</div>
+                        <h3 style="margin-bottom: 10px; font-size: 1.3rem;">3. Comprehensive Insights</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.95rem; line-height: 1.6;">
+                            Explore structured reports for Resume Score &amp; Skills, Missing Skill Gap Learning Suggestions, and Career Recommendations.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Target Roles Highlight -->
+        <section style="padding: 60px 0; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+            <div class="container">
+                <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 36px; flex-wrap: wrap; gap: 16px;">
+                    <div>
+                        <h2 style="font-size: 2rem;">Trending Target Roles</h2>
+                        <p style="color: var(--text-secondary); margin-top: 6px;">Pre-configured industry skill benchmarks ready for immediate comparison.</p>
+                    </div>
+                    <a href="job_role.html" class="btn btn-secondary btn-sm">Explore All 30+ Roles →</a>
+                </div>
+
+                <div class="grid grid-3">
+                    <div class="card" style="padding: 24px;">
+                        <span class="hero-tag" style="margin-bottom: 10px;">Security</span>
+                        <h3 style="margin-bottom: 8px;">Cybersecurity Analyst</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 14px;">SIEM, Network Security, Ethical Hacking, Incident Response, Firewalls, Wireshark, Linux.</p>
+                        <a href="job_role.html" style="font-size: 0.9rem; font-weight: 600;">Select Role &amp; Compare →</a>
+                    </div>
+
+                    <div class="card" style="padding: 24px;">
+                        <span class="hero-tag" style="margin-bottom: 10px;">AI &amp; Machine Learning</span>
+                        <h3 style="margin-bottom: 8px;">MLOps Engineer</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 14px;">Python, Docker, Kubernetes, MLflow, CI/CD, AWS, Model Deployment, Monitoring.</p>
+                        <a href="job_role.html" style="font-size: 0.9rem; font-weight: 600;">Select Role &amp; Compare →</a>
+                    </div>
+
+                    <div class="card" style="padding: 24px;">
+                        <span class="hero-tag" style="margin-bottom: 10px;">Cloud &amp; DevOps</span>
+                        <h3 style="margin-bottom: 8px;">Cloud Security Engineer</h3>
+                        <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 14px;">AWS, Azure, IAM, Cloud Security, Terraform, Compliance, Encryption, Kubernetes.</p>
+                        <a href="job_role.html" style="font-size: 0.9rem; font-weight: 600;">Select Role &amp; Compare →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Smart Resume Analyzer • AI &amp; NLP Powered Candidate Evaluation System</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/diagram-background.js"></script>
+    <script src="js/config.js"></script>
+</body>
+</html>

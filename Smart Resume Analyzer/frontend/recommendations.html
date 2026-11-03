@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recommendations – Smart Resume Analyzer</title>
+    <meta name="description" content="Personalized certification, project, and resume formatting recommendations based on your skill gap analysis.">
+    <link rel="stylesheet" href="css/style.css?v=3">
+    <style>
+        .rec-item {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 18px 22px;
+            margin-bottom: 14px;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+        .rec-item:hover { border-color: var(--border-glow); transform: translateY(-2px); box-shadow: 0 4px 18px var(--glow-shadow); }
+        .rec-title { font-weight: 700; font-size: 1.05rem; }
+        .rec-sub   { font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5; }
+        .tip-item {
+            display: flex;
+            gap: 14px;
+            align-items: flex-start;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .tip-item:last-child { border-bottom: none; }
+        .tip-num {
+            flex-shrink: 0;
+            width: 32px; height: 32px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.85rem; font-weight: 800; color: #fff;
+            box-shadow: 0 2px 10px var(--glow-shadow);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">📄</div>
+                <span>Smart<span class="gradient-text">Resume</span></span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="job_role.html" class="nav-link">Job Roles</a></li>
+                <li><a href="upload.html" class="nav-link">Upload Resume</a></li>
+                <li><a href="score.html" class="nav-link">Resume Score</a></li>
+                <li><a href="suggestions.html" class="nav-link">Suggestions</a></li>
+                <li><a href="recommendations.html" class="nav-link active">Recommendations</a></li>
+                <li><a href="review.html" class="nav-link">Reviews</a></li>
+            </ul>
+            <div id="nav-user-area"></div>
+        </div>
+    </nav>
+
+    <main class="container" style="padding: 40px 0 60px;">
+
+        <!-- Page header -->
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:28px; flex-wrap:wrap; gap:12px;">
+            <div>
+                <h1 style="font-size:2.3rem;">Career <span class="gradient-text">Recommendations</span></h1>
+                <p style="color:var(--text-secondary); margin-top:4px;">Certifications, project ideas, and resume formatting tips tailored for your target role.</p>
+            </div>
+            <a href="upload.html" class="btn btn-primary btn-sm">+ Analyze Another Resume</a>
+        </div>
+
+        <!-- Result Tabs -->
+        <div class="result-tabs">
+            <a href="score.html" class="result-tab">📊 Resume Score &amp; Skills</a>
+            <a href="suggestions.html" class="result-tab">💡 Suggestions</a>
+            <a href="recommendations.html" class="result-tab active">🎓 Recommendations</a>
+        </div>
+
+        <!-- No Data State -->
+        <div id="rec-no-data" class="card" style="text-align:center; padding:60px 20px; display:none;">
+            <div style="font-size:3rem; margin-bottom:16px;">🎓</div>
+            <h2 style="margin-bottom:10px;">No Analysis Data Found</h2>
+            <p style="color:var(--text-secondary); max-width:500px; margin:0 auto 24px;">
+                Please select a job role and upload your resume first to receive personalized recommendations.
+            </p>
+            <a href="upload.html" class="btn btn-primary">Upload Resume Now →</a>
+        </div>
+
+        <!-- Recommendations Content -->
+        <div id="rec-main-content" style="display:none;">
+
+            <!-- Certifications -->
+            <div class="card" style="margin-bottom:28px;">
+                <div style="display:flex; align-items:center; gap:12px; margin-bottom:6px;">
+                    <div style="font-size:2rem;">🎓</div>
+                    <div>
+                        <h2 style="font-size:1.4rem; margin:0;">Recommended Industry Certifications</h2>
+                        <p style="color:var(--text-secondary); font-size:0.88rem; margin-top:2px;">
+                            Verified credentials that significantly boost candidate ranking for this target role.
+                        </p>
+                    </div>
+                </div>
+                <hr style="border-color:var(--border-color); margin:16px 0;">
+                <div id="rec-certs-list"></div>
+            </div>
+
+            <!-- Projects to Build -->
+            <div class="card" style="margin-bottom:28px;">
+                <div style="display:flex; align-items:center; gap:12px; margin-bottom:6px;">
+                    <div style="font-size:2rem;">🛠️</div>
+                    <div>
+                        <h2 style="font-size:1.4rem; margin:0;">Recommended Portfolio Projects</h2>
+                        <p style="color:var(--text-secondary); font-size:0.88rem; margin-top:2px;">
+                            Practical GitHub repositories to build that showcase hands-on domain mastery to recruiters.
+                        </p>
+                    </div>
+                </div>
+                <hr style="border-color:var(--border-color); margin:16px 0;">
+                <div id="rec-projects-list"></div>
+            </div>
+
+            <!-- Resume Structure Tips -->
+            <div class="card" style="margin-bottom:28px;">
+                <div style="display:flex; align-items:center; gap:12px; margin-bottom:6px;">
+                    <div style="font-size:2rem;">📝</div>
+                    <div>
+                        <h2 style="font-size:1.4rem; margin:0;">Resume Structure &amp; Formatting Best Practices</h2>
+                        <p style="color:var(--text-secondary); font-size:0.88rem; margin-top:2px;">
+                            Actionable adjustments to strengthen clarity, formatting, and impact.
+                        </p>
+                    </div>
+                </div>
+                <hr style="border-color:var(--border-color); margin:16px 0;">
+                <div id="rec-tips-list"></div>
+            </div>
+
+            <!-- Navigation Box -->
+            <div style="display:flex; gap:16px; flex-wrap:wrap; margin-top:16px;">
+                <a href="suggestions.html" class="btn btn-secondary" style="flex:1; text-align:center; padding:16px; font-size:1rem;">
+                    ← Back to Suggestions
+                </a>
+                <a href="upload.html" class="btn btn-primary" style="flex:1; text-align:center; padding:16px; font-size:1rem;">
+                    🚀 Upload &amp; Analyze Another Resume →
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>Smart Resume Analyzer • Personalized Career Guidance Powered by NLP</p>
+        </div>
+    </footer>
+
+    <script src="js/diagram-background.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/recommendations.js"></script>
+</body>
+</html>

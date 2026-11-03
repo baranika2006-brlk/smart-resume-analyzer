@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ratings & Reviews - Smart Resume Analyzer</title>
+    <link rel="stylesheet" href="css/style.css?v=3">
+    <style>
+        .star-rating-input span {
+            font-size: 2rem;
+            cursor: pointer;
+            color: rgba(255, 255, 255, 0.2);
+            transition: color 0.2s, transform 0.2s;
+        }
+        .star-rating-input span:hover {
+            transform: scale(1.15);
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">📄</div>
+                <span>Smart<span class="gradient-text">Resume</span></span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="job_role.html" class="nav-link">Job Roles</a></li>
+                <li><a href="upload.html" class="nav-link">Upload Resume</a></li>
+                <li><a href="score.html" class="nav-link">Resume Score</a></li>
+                <li><a href="suggestions.html" class="nav-link">Suggestions</a></li>
+                <li><a href="recommendations.html" class="nav-link">Recommendations</a></li>
+                <li><a href="review.html" class="nav-link active">Reviews</a></li>
+            </ul>
+            <div id="nav-user-area"></div>
+        </div>
+    </nav>
+
+    <main class="container" style="padding: 40px 0 60px;">
+        <div style="text-align:center; margin-bottom:40px;">
+            <h1 style="font-size:2.4rem; margin-bottom:10px;">User Ratings &amp; <span class="gradient-text">Reviews</span></h1>
+            <p style="color:var(--text-secondary); max-width:600px; margin:0 auto;">
+                Read feedback from students and job seekers who used Smart Resume Analyzer to improve their interview readiness.
+            </p>
+        </div>
+
+        <div class="grid grid-2" style="align-items:start;">
+            <!-- Submit Review Form Card -->
+            <div class="card">
+                <h3 style="font-size:1.4rem; margin-bottom:16px;">Leave Your Feedback</h3>
+                <form id="review-form">
+                    <div class="form-group">
+                        <label class="form-label">Select Star Rating</label>
+                        <div class="star-rating-input" style="display:flex; gap:8px;">
+                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="review-username">Your Name (Optional)</label>
+                        <input type="text" id="review-username" class="form-input" placeholder="e.g. Aarav Sharma">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="review-comment">Your Feedback Comment</label>
+                        <textarea id="review-comment" class="form-textarea" rows="4" placeholder="How did Smart Resume Analyzer help your resume preparation?" required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width:100%;">
+                        Submit Rating &amp; Review →
+                    </button>
+                </form>
+            </div>
+
+            <!-- Published Reviews Feed -->
+            <div>
+                <div style="background:var(--bg-surface-elevated); border:1px solid var(--border-color); border-radius:var(--radius-lg); padding:24px; margin-bottom:24px; display:flex; justify-content:space-around; text-align:center; box-shadow:var(--glass-shadow); backdrop-filter:var(--backdrop-blur);">
+                    <div>
+                        <div id="avg-rating-display" style="font-size:2.5rem; font-weight:800; color:#f59e0b; font-family:'Outfit';">5.0</div>
+                        <span style="font-size:0.85rem; color:var(--text-secondary);">Average Star Rating</span>
+                    </div>
+                    <div style="border-left:1px solid var(--border-color); padding-left:30px;">
+                        <div id="total-reviews-count" style="font-size:2.5rem; font-weight:800; color:var(--accent-primary); font-family:'Outfit';">0</div>
+                        <span style="font-size:0.85rem; color:var(--text-secondary);">Verified User Reviews</span>
+                    </div>
+                </div>
+
+                <div id="reviews-feed">
+                    <!-- Populated dynamically by review.js -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>Smart Resume Analyzer • Rating &amp; Review Feedback Module</p>
+        </div>
+    </footer>
+
+    <script src="js/diagram-background.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/review.js"></script>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Management Console - Smart Resume Analyzer</title>
+    <link rel="stylesheet" href="css/style.css?v=3">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">⚙️</div>
+                <span>Smart<span class="gradient-text">Admin</span></span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Main App</a></li>
+                <li><a href="admin.html" class="nav-link active">Admin Console</a></li>
+            </ul>
+            <div id="nav-user-area"></div>
+        </div>
+    </nav>
+
+    <main class="container" style="padding: 40px 0 60px;">
+        <div style="margin-bottom:32px;">
+            <h1 style="font-size:2.4rem;">Admin <span class="gradient-text">Management Console</span></h1>
+            <p style="color:var(--text-secondary);">Manage users, job roles, required skill benchmarks, uploaded
+                resumes, and platform analytics.</p>
+        </div>
+
+        <!-- System Overview Metrics Grid -->
+        <div class="grid grid-4" style="margin-bottom:36px;">
+            <div class="card" style="padding:20px; text-align:center;">
+                <span style="font-size:0.8rem; color:var(--text-muted); text-transform:uppercase;">REGISTERED
+                    USERS</span>
+                <div id="adm-stat-users"
+                    style="font-size:2.5rem; font-weight:800; color:var(--accent-primary); font-family:'Outfit';">0</div>
+            </div>
+
+            <div class="card" style="padding:20px; text-align:center;">
+                <span style="font-size:0.8rem; color:var(--text-muted); text-transform:uppercase;">TARGET JOB
+                    ROLES</span>
+                <div id="adm-stat-roles"
+                    style="font-size:2.5rem; font-weight:800; color:var(--accent-violet); font-family:'Outfit';">0</div>
+            </div>
+
+            <div class="card" style="padding:20px; text-align:center;">
+                <span style="font-size:0.8rem; color:var(--text-muted); text-transform:uppercase;">RESUMES
+                    UPLOADED</span>
+                <div id="adm-stat-resumes"
+                    style="font-size:2.5rem; font-weight:800; color:var(--accent-emerald); font-family:'Outfit';">0
+                </div>
+            </div>
+
+            <div class="card" style="padding:20px; text-align:center;">
+                <span style="font-size:0.8rem; color:var(--text-muted); text-transform:uppercase;">AVG PLATFORM
+                    SCORE</span>
+                <div id="adm-stat-score"
+                    style="font-size:2.5rem; font-weight:800; color:var(--accent-amber); font-family:'Outfit';">0/100</div>
+            </div>
+        </div>
+
+        <!-- Job Roles Management Section -->
+        <div class="grid grid-2" style="margin-bottom:36px; align-items:start;">
+            <div class="card">
+                <h3 style="font-size:1.3rem; margin-bottom:16px;">Add / Update Job Role</h3>
+                <form id="admin-add-role-form">
+                    <div class="form-group">
+                        <label class="form-label">Job Role Title</label>
+                        <input type="text" id="role-title" class="form-input" placeholder="e.g. Cloud Engineer"
+                            required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Category</label>
+                        <input type="text" id="role-category" class="form-input"
+                            placeholder="e.g. Cloud & Infrastructure">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Description</label>
+                        <textarea id="role-desc" class="form-textarea" rows="2"
+                            placeholder="Brief job role responsibilities"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Required Technical Skills (Comma separated)</label>
+                        <input type="text" id="role-req-skills" class="form-input"
+                            placeholder="AWS, Docker, Kubernetes, Python, Terraform" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Soft Skills (Comma separated)</label>
+                        <input type="text" id="role-soft-skills" class="form-input"
+                            placeholder="Problem Solving, Teamwork, Communication">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Recommended Certifications (Comma separated)</label>
+                        <input type="text" id="role-certs" class="form-input"
+                            placeholder="AWS Certified Solutions Architect, CKA">
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Suggested Projects (Comma separated)</label>
+                        <input type="text" id="role-projects" class="form-input"
+                            placeholder="Automated CI/CD Pipeline, Multi-Region Infrastructure Deployment">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary" style="width:100%;">Save Job Role to MongoDB
+                        →</button>
+                </form>
+            </div>
+
+            <div class="card">
+                <h3 style="font-size:1.3rem; margin-bottom:16px;">Existing Job Roles Benchmark</h3>
+                <div id="adm-roles-list">
+                    <!-- Populated dynamically by admin.js -->
+                </div>
+            </div>
+        </div>
+
+        <!-- User Management Table -->
+        <div class="card" style="margin-bottom:36px;">
+            <h3 style="font-size:1.3rem; margin-bottom:16px;">Registered System Users</h3>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>User Name</th>
+                            <th>Email Address</th>
+                            <th>Role</th>
+                            <th>Registration Date</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="adm-users-table-body">
+                        <!-- Populated by admin.js -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Uploaded Resumes Log Table -->
+        <div class="card">
+            <h3 style="font-size:1.3rem; margin-bottom:16px;">Uploaded Resume Files Log</h3>
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Filename</th>
+                            <th>File Size</th>
+                            <th>User ID</th>
+                            <th>Upload Timestamp</th>
+                        </tr>
+                    </thead>
+                    <tbody id="adm-resumes-table-body">
+                        <!-- Populated by admin.js -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>Smart Resume Analyzer • Admin Management Module</p>
+        </div>
+    </footer>
+
+    <script src="js/diagram-background.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+
+</html>

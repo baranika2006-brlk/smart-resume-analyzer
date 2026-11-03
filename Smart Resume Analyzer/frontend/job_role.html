@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Job Role - Smart Resume Analyzer</title>
+    <link rel="stylesheet" href="css/style.css?v=3">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">📄</div>
+                <span>Smart<span class="gradient-text">Resume</span></span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="job_role.html" class="nav-link active">Job Roles</a></li>
+                <li><a href="upload.html" class="nav-link">Upload Resume</a></li>
+                <li><a href="score.html" class="nav-link">Resume Score</a></li>
+                <li><a href="suggestions.html" class="nav-link">Suggestions</a></li>
+                <li><a href="recommendations.html" class="nav-link">Recommendations</a></li>
+                <li><a href="review.html" class="nav-link">Reviews</a></li>
+            </ul>
+            <div id="nav-user-area"></div>
+        </div>
+    </nav>
+
+    <main class="container" style="padding: 40px 0 60px;">
+        <div style="text-align:center; margin-bottom:32px;">
+            <h1 style="font-size:2.5rem; margin-bottom:12px;">Select Your <span class="gradient-text">Target Job Role</span></h1>
+            <p style="color:var(--text-secondary); max-width:680px; margin:0 auto;">
+                Choose from 30+ industry-benchmarked roles. Our NLP engine will evaluate your uploaded resume against the exact technical and soft skills required for the role.
+            </p>
+        </div>
+
+        <!-- Search and Category Filters -->
+        <div style="max-width:700px; margin:0 auto 28px;">
+            <input type="text" id="role-search-input" class="form-input" placeholder="🔍 Search roles by title, keyword, or skill (e.g. Python, AWS, Security, AI, Scrum)..." style="padding:14px 20px; font-size:1rem; border-radius:var(--radius-full); margin-bottom:18px;">
+            
+            <div class="category-filter-bar" id="category-filter-container">
+                <button class="category-tab-btn active" data-category="ALL">All Roles</button>
+                <button class="category-tab-btn" data-category="Technology">Software & Web</button>
+                <button class="category-tab-btn" data-category="Security">Cybersecurity</button>
+                <button class="category-tab-btn" data-category="AI & Data">AI, ML & Data</button>
+                <button class="category-tab-btn" data-category="Cloud & DevOps">Cloud & DevOps</button>
+                <button class="category-tab-btn" data-category="Mobile">Mobile Dev</button>
+                <button class="category-tab-btn" data-category="Management">IT & Management</button>
+            </div>
+        </div>
+
+        <div id="selected-role-notice" style="margin-bottom:28px;"></div>
+
+        <div id="job-roles-grid" class="grid grid-3">
+            <!-- Dynamically loaded from MongoDB via job_role.js -->
+        </div>
+
+        <div style="margin-top:40px; text-align:center;">
+            <button id="btn-proceed-upload" class="btn btn-primary" style="padding:16px 40px; font-size:1.05rem;">
+                Proceed to Resume Upload →
+            </button>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>Smart Resume Analyzer • 30+ Benchmark Roles Managed in MongoDB</p>
+        </div>
+    </footer>
+
+    <script src="js/diagram-background.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/job_role.js"></script>
+</body>
+</html>

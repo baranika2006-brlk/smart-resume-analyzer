@@ -1,0 +1,1 @@
+Jane Doe - Python Developer with Flask, Django, REST API, Git, Docker, MongoDB, SQL. Education: B.Tech in Computer Science. Certifications: AWS Certified Developer. Developed multiple web apps.

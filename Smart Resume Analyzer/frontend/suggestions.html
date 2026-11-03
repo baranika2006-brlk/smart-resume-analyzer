@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suggestions – Smart Resume Analyzer</title>
+    <meta name="description"
+        content="Personalized skill improvement roadmaps and ATS keyword suggestions for your resume.">
+    <link rel="stylesheet" href="css/style.css?v=3">
+    <style>
+        .sug-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            padding: 18px 22px;
+            margin-bottom: 14px;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+
+        .sug-card:hover {
+            border-color: var(--border-glow);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 18px var(--glow-shadow);
+        }
+
+        .sug-card-title {
+            font-weight: 700;
+            font-size: 1.05rem;
+        }
+
+        .sug-card-sub {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .ats-chip {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-card);
+            color: var(--accent-primary);
+            border-radius: var(--radius-full);
+            padding: 6px 16px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin: 5px;
+            transition: transform 0.2s;
+        }
+
+        .ats-chip:hover {
+            transform: scale(1.05);
+            border-color: var(--border-glow);
+            box-shadow: 0 0 12px var(--glow-shadow);
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">📄</div>
+                <span>Smart<span class="gradient-text">Resume</span></span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="job_role.html" class="nav-link">Job Roles</a></li>
+                <li><a href="upload.html" class="nav-link">Upload Resume</a></li>
+                <li><a href="score.html" class="nav-link">Resume Score</a></li>
+                <li><a href="suggestions.html" class="nav-link active">Suggestions</a></li>
+                <li><a href="recommendations.html" class="nav-link">Recommendations</a></li>
+                <li><a href="review.html" class="nav-link">Reviews</a></li>
+            </ul>
+            <div id="nav-user-area"></div>
+        </div>
+    </nav>
+
+    <main class="container" style="padding: 40px 0 60px;">
+
+        <!-- Page header -->
+        <div
+            style="display:flex; justify-content:space-between; align-items:center; margin-bottom:28px; flex-wrap:wrap; gap:12px;">
+            <div>
+                <h1 style="font-size:2.3rem;">Personalized <span class="gradient-text">Suggestions</span></h1>
+                <p style="color:var(--text-secondary); margin-top:4px;">Targeted learning roadmap for missing skills and
+                    ATS keywords to optimize your resume.</p>
+            </div>
+            <a href="upload.html" class="btn btn-primary btn-sm">+ Analyze Another Resume</a>
+        </div>
+
+        <!-- Result Tabs -->
+        <div class="result-tabs">
+            <a href="score.html" class="result-tab">📊 Resume Score &amp; Skills</a>
+            <a href="suggestions.html" class="result-tab active">💡 Suggestions</a>
+            <a href="recommendations.html" class="result-tab">🎓 Recommendations</a>
+        </div>
+
+        <!-- No Data State -->
+        <div id="sug-no-data" class="card" style="text-align:center; padding:60px 20px; display:none;">
+            <div style="font-size:3rem; margin-bottom:16px;">💡</div>
+            <h2 style="margin-bottom:10px;">No Analysis Data Found</h2>
+            <p style="color:var(--text-secondary); max-width:500px; margin:0 auto 24px;">
+                Please select a job role and upload your resume first to generate your suggestions.
+            </p>
+            <a href="upload.html" class="btn btn-primary">Upload Resume Now →</a>
+        </div>
+
+        <!-- Suggestions Content -->
+        <div id="sug-main-content" style="display:none;">
+
+            <!-- Missing Skills Section -->
+            <div class="card" style="margin-bottom:28px;">
+                <div style="display:flex; align-items:center; gap:12px; margin-bottom:6px;">
+                    <div style="font-size:2rem;">🧠</div>
+                    <div>
+                        <h2 style="font-size:1.4rem; margin:0;">Missing Skills – Learning Roadmap</h2>
+                        <p style="color:var(--text-secondary); font-size:0.88rem; margin-top:2px;">
+                            Detailed guidance on how to acquire and demonstrate each skill required by your target job
+                            role.
+                        </p>
+                    </div>
+                </div>
+                <hr style="border-color:var(--border-color); margin:16px 0;">
+                <div id="sug-skills-list">
+                    <!-- Rendered by suggestions.js -->
+                </div>
+            </div>
+
+            <!-- ATS Keywords Section -->
+            <div class="card" style="margin-bottom:28px;">
+                <div style="display:flex; align-items:center; gap:12px; margin-bottom:6px;">
+                    <div style="font-size:2rem;">🏷️</div>
+                    <div>
+                        <h2 style="font-size:1.4rem; margin:0;">ATS Keyword Optimization</h2>
+                        <p style="color:var(--text-secondary); font-size:0.88rem; margin-top:2px;">
+                            Add these exact keywords to your resume to pass automated Applicant Tracking Systems.
+                        </p>
+                    </div>
+                </div>
+                <hr style="border-color:var(--border-color); margin:16px 0;">
+                <div id="sug-keywords-wrap" style="padding: 4px 0;"></div>
+            </div>
+
+            <!-- Navigation Box -->
+            <div style="display:flex; gap:16px; flex-wrap:wrap; margin-top:16px;">
+                <a href="score.html" class="btn btn-secondary"
+                    style="flex:1; text-align:center; padding:16px; font-size:1rem;">
+                    ← Back to Resume Score
+                </a>
+                <a href="recommendations.html" class="btn btn-primary"
+                    style="flex:1; text-align:center; padding:16px; font-size:1rem;">
+                    👉 View Career Recommendations →
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>Smart Resume Analyzer • AI-Powered Personalized Career Suggestions</p>
+        </div>
+    </footer>
+
+    <script src="js/diagram-background.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/suggestions.js"></script>
+</body>
+
+</html>
